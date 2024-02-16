@@ -1,0 +1,196 @@
+.container-inscripcion {
+  width: 100%;
+  background-color: #f0f0f0;
+height: auto;
+  min-height: 95vh;
+  padding-top: 60px;
+}
+
+.contenedor-formulario-inscripcion {
+  width: 80%;
+  max-width: 1100px;
+  background-color: #fff;
+
+  margin: auto;
+  padding: 60px 30px;
+}
+.contenedor-formulario-inscripcion .titulo-formulario-inscripcion {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+
+  color: #333333;
+  width: 90%;
+  margin: auto;
+}
+.contenedor-formulario-inscripcion .separador-formulario-inscripcion {
+  border: 1px solid #d6d6d6;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+.contenedor-formulario-inscripcion .formulario-inscripcion {
+  display: grid;
+  width: 85%;
+  grid-template-columns: 1fr 1fr;
+  margin: auto;
+  column-gap: 90px;
+  row-gap: 50px;
+}
+
+.contenedor-formulario-inscripcion
+  .formulario-inscripcion
+  .control-formulario-inscripcion
+  .label-formulario-inscripcion {
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  /* identical to box height */
+
+  text-transform: uppercase;
+
+  color: #333333;
+}
+
+.contenedor-formulario-inscripcion
+  .formulario-inscripcion
+  .control-formulario-inscripcion
+  .input-formulario-inscripcion {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #dadada;
+  border-radius: 3px;
+  height: 40px;
+}
+
+.contenedor-formulario-inscripcion
+  .formulario-inscripcion
+  .control-formulario-inscripcion
+  .input-number-with-selector {
+  width: 100%;
+}
+
+.contenedor-formulario-inscripcion
+  .formulario-inscripcion
+  .control-formulario-inscripcion
+  .input-number-with-selector
+  .input-formulario-inscripcion {
+  width: 79%;
+  border-radius: 3px 0 0 3px;
+}
+
+.contenedor-formulario-inscripcion
+  .formulario-inscripcion
+  .control-formulario-inscripcion
+  .input-number-with-selector
+  .select-formulario-inscripcion {
+  width: 19%;
+  height: 43px;
+
+  border: none;
+  background-color: #979797;
+  border: 1px solid #dadada;
+  border-radius: 0 3px 3px 0;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  text-align: center;
+  background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16' fill='%23000000' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>")
+    no-repeat;
+  background-position: calc(100% - 0.75rem) center !important;
+  -moz-appearance: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+}
+
+.contenedor-formulario-inscripcion .formulario-inscripcion .btn-formulario {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  text-align: center;
+
+  color: #ffffff;
+  width: 160px;
+  height: 40px;
+  background: #ffc300;
+  border-radius: 24px;
+  border: none;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin: auto;
+}
+
+.contenedor-formulario-inscripcion
+  .formulario-inscripcion
+  .btn-formulario:hover {
+  background: #e4af00;
+}
+
+.contenedor-formulario-inscripcion
+  .formulario-inscripcion
+  .btn-formulario:active {
+  background: #b68c01;
+  width: 162px;
+  height: 42px;
+}
+
+.contenedor-formulario-inscripcion
+  .formulario-inscripcion
+  .btn-formulario:disabled {
+  background: #979797;
+}
+
+.error-input-formulario-inscripcion {
+  color: red;
+  font-family: "Poppins", sans-serif;
+}
+
+.label-formulario-requerido {
+  color: red;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+}
+.contenedor-formulario-inscripcion{
+  font-family: "Poppins", sans-serif;
+}
+
+.contenedor-formulario-inscripcion-alerta{
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  width: 80%;
+  max-width: 1100px;
+  background-color: #fff;
+
+  margin: auto;
+  padding: 60px 30px;
+}
+
+@media (max-width: 425px) {
+  .contenedor-formulario-inscripcion .formulario-inscripcion {
+    display: flex;
+    flex-direction: column;
+  }
+  .control-formulario-inscripcion {
+    width: 100%;
+  }
+
+  .contenedor-formulario-inscripcion
+  .formulario-inscripcion
+  .control-formulario-inscripcion
+  .input-number-with-selector
+  .input-formulario-inscripcion {
+  width: 78%;
+
+}
+
+}

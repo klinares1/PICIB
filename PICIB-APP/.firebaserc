@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "picib-185ec"
+  },
+  "targets": {
+    "picib-185ec": {
+      "hosting": {
+        "PICIB-APLICACION-WEB": [
+          "picib-185ec"
+        ]
+      }
+    }
+  }
+}

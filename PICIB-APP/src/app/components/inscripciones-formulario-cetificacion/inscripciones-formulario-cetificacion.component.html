@@ -1,0 +1,53 @@
+<div class="container-formulario-certificado" *ngIf="isVisible">
+  <div class="formulario-certificado-content">
+    <button class="close" (click)="hide()">✖</button>
+    <h1 class="titulo-formulario-certificado">Certificar</h1>
+    <p class="descripcion-formulario-certificado">
+      Se está confirmando el certificado de {{ inscripcionCertificacion.estudiante?.nombre }} en el curso de {{ inscripcionCertificacion.capacitacion?.curso?.nombre }}.
+    </p>
+    <div class="formulario-certificado-crear-editar">
+      <form
+        [formGroup]="formularioCertificacion"
+        (submit)="onSubmit()"
+        class="formulario-certificado"
+      >
+        <div class="control-formulario-certificado">
+          <label for="" class="label-formulario-certificado">¿SE CERTIFICO?</label>
+
+          <select
+            name=""
+            id=""
+            class="input-formulario-certificado"
+            formControlName="estado"
+          >
+            <option value="SI">Si</option>
+            <option value="NO">No</option>
+          </select>
+          <span
+            class="error-input-formulario-certificado"
+            *ngIf="estado?.invalid && estado?.touched"
+            >Es necesario confirmar si se certificó o no</span
+          >
+        </div>
+        <div class="control-formulario-certificado">
+          <label for="descripcion" class="label-formulario-certificado"
+            >COMENTARIOS</label
+          >
+          <textarea
+            name="descripcion"
+            class="input-formulario-certificado"
+            formControlName="comentario"
+          >
+          </textarea>
+        </div>
+
+        <button
+          class="btn-formulario"
+          [disabled]="!formularioCertificacion.valid"
+        >
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

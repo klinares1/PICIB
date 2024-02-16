@@ -1,0 +1,150 @@
+.container-menu-superior {
+  width: 100vw;
+  background: linear-gradient(225deg, #3023ae 0%, #c86dd7 100%);
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+}
+.logo-menu-superior {
+  margin-left: 40px;
+}
+.logo-menu-superior svg {
+  width: 180px;
+  height: 80px;
+}
+
+.listado-menu-superior {
+  height: 40px;
+  width: 80%;
+}
+
+.listado-menu-superior .lista-menu-superior {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  align-items: center;
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 40px;
+  color: #ffffff;
+  width: 100%;
+}
+
+.listado-menu-superior .lista-menu-superior .item-menu-superior {
+  margin-left: 10px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s;
+  height: 40px;
+}
+
+.listado-menu-superior .lista-menu-superior .last-item-menu-superior {
+  margin-left: auto;
+}
+
+.listado-menu-superior .lista-menu-superior .item-menu-superior:hover {
+  font-size: 18px;
+}
+
+.listado-menu-superior .lista-menu-superior .item-menu-superior a {
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  display: block;
+}
+
+/* hambugesa */
+.icon-hambugesa{
+  display: none;
+}
+#checkbox-hambugesa {
+  display: none;
+}
+
+.toggle-hambugesa {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition-duration: .3s;
+}
+
+.bars-hambugesa {
+  width: 100%;
+  height: 4px;
+  background-color: rgb(253, 255, 243);
+  border-radius: 5px;
+  transition-duration: .3s;
+}
+ /* #checkbox-hambugesa:checked + .toggle-hambugesa .bars-hambugesa {
+  margin-left: 13px;
+} */
+
+#checkbox-hambugesa:checked + .toggle-hambugesa #bar2-hambugesa {
+  transform: translateY(14px) rotate(60deg);
+  margin-left: 0;
+  transform-origin: right;
+  transition-duration: .3s;
+  z-index: 2;
+}
+
+#checkbox-hambugesa:checked + .toggle-hambugesa #bar1-hambugesa {
+  transform: translateY(28px) rotate(-60deg);
+  transition-duration: .3s;
+  transform-origin: left;
+  z-index: 1;
+}
+
+#checkbox-hambugesa:checked + .toggle-hambugesa {
+  transform: rotate(-90deg);
+}
+/* #checkbox-hambugesa:checked + .toggle-hambugesa #bar3-hambugesa {
+  transform: rotate(90deg);
+  transition-duration: .3s;
+  transform-origin:right;
+} */
+
+@media (max-width: 425px) {
+  .icon-hambugesa{
+    display: block;
+    margin-left: calc( 100vw -  70vw);
+    margin-top: 20px;
+  }
+
+  .listado-menu-superior{
+    display: none;
+  }
+
+ .listado-menu-superior.show-menu{
+    display: block;
+    position: absolute;
+    height: calc(100vh - 80px);
+    top: 80px;
+    width: 100vw;
+    z-index: 1000;
+  }
+
+
+  .listado-menu-superior.show-menu .lista-menu-superior{
+
+    flex-direction: column;
+    background: linear-gradient(225deg, #3023ae 0%, #c86dd7 100%);
+    align-items: center;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding-top: 20px;
+  }
+  .listado-menu-superior .lista-menu-superior .last-item-menu-superior {
+    margin: 0;
+  }
+}

@@ -1,0 +1,140 @@
+.container-inscripciones {
+  background-image: url("../../../assets/background-waves.svg");
+  width: 100vw;
+
+  padding-top: 60px;
+  background-color: #f4f4f4;
+}
+
+.container-inscripciones .fondo-main-content-inscripciones {
+  width: 88vw;
+  margin: auto;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: #fff;
+  padding-bottom: 60px;
+  padding-top: 20px;
+}
+
+.container-inscripciones
+  .fondo-main-content-inscripciones
+  .encabezado-content-inscripciones {
+  width: 90%;
+    margin: auto;
+
+}
+
+.container-inscripciones
+  .fondo-main-content-inscripciones
+  .encabezado-content-inscripciones
+  .titulo-formulario-inscripcion {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  color: #333333;
+  width: 500px;
+  margin: 0px;
+}
+
+.container-inscripciones
+  .fondo-main-content-inscripciones
+  .encabezado-content-inscripciones
+  .btn-agregar-inscripcion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  color: #fff;
+  fill: #fff;
+  background: #c86dd7;
+  border-radius: 12px;
+  outline: none;
+  border: none;
+  text-align: center;
+  height: 32px;
+}
+.container-inscripciones
+  .fondo-main-content-inscripciones
+  .encabezado-content-inscripciones
+  .btn-agregar-inscripcion:hover {
+  background: #6200b3;
+  font-weight: 600;
+}
+.container-inscripciones
+  .fondo-main-content-inscripciones
+  .encabezado-content-inscripciones
+  .btn-agregar-inscripcion:active {
+  width: 132px;
+  height: 34px;
+}
+.container-inscripciones
+  .fondo-main-content-inscripciones
+  .encabezado-content-inscripciones
+  .btn-agregar-inscripcion
+  svg {
+  height: 28px;
+  width: 28px;
+}
+
+.tabla-inscripciones {
+  text-align: left;
+  position: relative;
+  border-collapse: collapse;
+  color: #333333;
+  background-color: #fff;
+  margin: auto;
+  width: 90%;
+}
+
+td,
+th {
+  border: 2px solid #f4f4f4;
+  padding: 20px;
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+th {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 24px;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+  background: #fff;
+  border-radius: 0;
+  position: sticky;
+  top: 0;
+  padding: 10px;
+  text-align: center;
+}
+
+tbody tr td button {
+  outline: none;
+  border: none;
+  width: 38px;
+  height: 38px;
+  background: none;
+}
+
+tbody tr td button svg {
+  width: auto;
+}
+
+tbody tr td button:hover {
+  width: 40px;
+}
+
+
+@media (max-width: 425px) {
+  .tabla-inscripciones{
+    overflow-x: scroll;
+    display: block;
+    width: 100%;
+  }
+}

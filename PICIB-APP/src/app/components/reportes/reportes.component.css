@@ -1,0 +1,150 @@
+.contenedor-graficas{
+  display: flex;
+  width: 88vw;
+
+  margin: auto;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 40px;
+  column-gap: 60px;
+}
+
+
+
+.filtros-graficas{
+  margin: auto;
+  width: 85vw;
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-around;
+}
+
+
+.contenedor-filtros{
+  width: 85vw;
+  margin: 30px auto;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  padding: 20px 30px;
+}
+.contenedor-filtros h2{
+  font-family: "Poppins", sans-serif;
+}
+
+.control-filtro-reportes{
+  width: 160px;
+}
+
+.label-filtro-reportes{
+  width: 100%;
+}
+
+
+.label-filtro-reportes {
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+
+  color: #333333;
+}
+
+.input-filtro-reportes {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #dadada;
+  border-radius: 3px;
+  height: 40px;
+}
+
+.input-formulario-reportes:focus{
+  outline: 2px solid #131b23ab;
+}
+
+
+.select-formulario-reportes{
+  width: 160px;
+  height: 40px;
+  outline: none;
+  border: 1px solid #dadada;
+  border-radius: 3px;
+}
+
+.grafica{
+  width: 45%;
+}
+
+.btn-pdf{
+  display: block;
+  margin: 30px auto;
+
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+  width: 160px;
+  height: 40px;
+  background: #ffc300;
+  border-radius: 24px;
+  border: none;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 3;
+
+}
+
+.btn-refresh-filters{
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+  width: 160px;
+  height: 40px;
+  background: #ffc300;
+  border-radius: 24px;
+  border: none;
+
+}
+
+.btn-pdf:hover{
+  background: #ff8c00;
+}
+.btn-pdf:focus {
+  outline: none;
+
+}
+.btn-refresh-filters:hover{
+  background: #ff8c00;
+}
+
+.btn-refresh-filters:focus {
+  outline: none;
+
+}
+@media (max-width: 425px) {
+  .filtros-graficas{
+    overflow-x: scroll;
+    column-gap: 20px;
+  }
+
+  .contenedor-graficas{
+    width: 90vw;
+  }
+
+  .grafica{
+    width: 100%;
+  }
+
+
+}

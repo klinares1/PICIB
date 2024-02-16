@@ -1,0 +1,27 @@
+<div class="contenedor-login">
+  <div class="contenedor-fondo-login">
+    <div class="contenedor-imagen-login">
+      <img src="/assets/Login-Logo.svg" alt="" class="imagen-login" />
+    </div>
+    <div class="contenedor-formulario-login">
+      <h3 class="titulo-formulario-login">Iniciar sesión en PICIB</h3>
+      <form
+        action=""
+        class="formulario-login"
+        [formGroup]="formLogin"
+        (submit)="onSubmit()"
+      >
+        <input type="email" name="email" id="email" formControlName="email" placeholder="Email"/>
+        <input
+          type="password"
+          name="password"
+          id=""
+          formControlName="password"
+          placeholder="Contraseña"
+        />
+        <span *ngIf="mensajeError !== ''">{{mensajeError}}</span>
+        <button>Iniciar Sesión</button>
+      </form>
+    </div>
+  </div>
+</div>

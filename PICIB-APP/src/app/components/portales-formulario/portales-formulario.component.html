@@ -1,0 +1,86 @@
+<div class="container-formulario-portal" *ngIf="isVisible">
+  <div class="formulario-portal-content">
+    <button class="close" (click)="hide()">✖</button>
+    <h1 class="titulo-formulario-portal">
+      {{ portalEditar.nombre ? "Editar Portal" : "Crear Portal" }}
+    </h1>
+    <div class="formulario-portal-crear-editar">
+      <form
+        [formGroup]="formularioPortal"
+        (submit)="onSubmit()"
+        class="formulario-portal"
+      >
+        <div class="control-formulario-portal">
+          <label for="" class="label-formulario-portal"
+            >NOMBRE DEL PORTAL</label
+          >
+          <input
+            type="text"
+            name="nombre"
+            id=""
+            [value]="portalEditar.nombre"
+            class="input-formulario-portal"
+            formControlName="nombre"
+          />
+          <span
+            class="error-input-formulario-portal"
+            *ngIf="nombre?.invalid && nombre?.touched"
+            >El nombre es requerido</span
+          >
+        </div>
+        <div class="control-formulario-portal">
+          <label for="" class="label-formulario-portal">Estado</label>
+          <label class="toggle">
+            <input
+              type="checkbox"
+              name="estado"
+              formControlName="estado"
+              [value]="portalEditar.estado"
+            />
+            <span class="slider round"></span>
+            <span class="message">Activo</span>
+            <span class="message-off">Desactivado</span>
+          </label>
+        </div>
+
+        <div class="control-formulario-portal">
+          <label for="" class="label-formulario-portal">UBICACION</label>
+          <input
+            type="text"
+            name="ubicacion"
+            [value]="portalEditar.ubicacion"
+            class="input-formulario-portal"
+            formControlName="ubicacion"
+          />
+          <span
+            class="error-input-formulario-portal"
+            *ngIf="ubicacion?.invalid && ubicacion?.touched"
+            >La ubicación requerida</span
+          >
+        </div>
+        <div class="control-formulario-portal">
+          <label for="" class="label-formulario-portal"
+            >HORARIOS DE ATENCIÓN</label
+          >
+          <input
+            type="text"
+            name="horariosAtencion"
+            [value]="portalEditar.horariosAtencion"
+            class="input-formulario-portal"
+            formControlName="horariosAtencion"
+            placeholder="lunes a viernes de 8:00a.m. hasta las 5:00p.m. y sábados de 8:00a.m. hasta las 12:00m"
+          />
+          <span
+            class="error-input-formulario-portal"
+            *ngIf="horariosAtencion?.invalid && horariosAtencion?.touched"
+            >El horario es requerido</span
+          >
+        </div>
+
+        <button class="btn-formulario" [disabled]="!formularioPortal.valid">
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

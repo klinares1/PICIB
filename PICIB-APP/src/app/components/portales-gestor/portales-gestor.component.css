@@ -1,0 +1,153 @@
+.container-portales {
+  background-image: url("../../../assets/background-waves.svg");
+  width: 100vw;
+  height: auto;
+  min-height: 95vh;
+  padding-top: 60px;
+  background-color: #f4f4f4;
+}
+
+.container-portales .fondo-main-content-portales {
+  width: 88vw;
+  margin: auto;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: #fff;
+  padding-bottom: 60px;
+  padding-top: 20px;
+}
+
+.container-portales .fondo-main-content-portales .encabezado-content-portales {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.container-portales
+  .fondo-main-content-portales
+  .encabezado-content-portales
+  .titulo-formulario-portal {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  color: #333333;
+  width: 500px;
+  margin: 0px;
+}
+
+.container-portales
+  .fondo-main-content-portales
+  .encabezado-content-portales
+  .btn-agregar-portal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  color: #fff;
+  fill: #fff;
+  background: #c86dd7;
+  border-radius: 12px;
+  outline: none;
+  border: none;
+  text-align: center;
+  height: 32px;
+}
+.container-portales
+  .fondo-main-content-portales
+  .encabezado-content-portales
+  .btn-agregar-portal:hover {
+  background: #6200b3;
+  font-weight: 600;
+}
+.container-portales
+  .fondo-main-content-portales
+  .encabezado-content-portales
+  .btn-agregar-portal:active {
+  width: 132px;
+  height: 34px;
+}
+.container-portales
+  .fondo-main-content-portales
+  .encabezado-content-portales
+  .btn-agregar-portal
+  svg {
+  height: 28px;
+  width: 28px;
+}
+
+.tabla-portales {
+  text-align: left;
+  position: relative;
+  border-collapse: collapse;
+  color: #333333;
+  background-color: #fff;
+  margin: auto;
+  width: 90%;
+}
+
+td,
+th {
+  border: 2px solid #f4f4f4;
+  padding: 20px;
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+th {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 24px;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+  background: #fff;
+  border-radius: 0;
+  position: sticky;
+  top: 0;
+  padding: 10px;
+  text-align: center;
+}
+
+tbody tr td button {
+  outline: none;
+  border: none;
+  width: 38px;
+  height: 38px;
+  background: none;
+}
+
+tbody tr td button svg {
+  width: auto;
+}
+
+tbody tr td button:hover {
+  width: 40px;
+}
+
+
+@media (max-width: 425px) {
+  .container-portales
+  .fondo-main-content-portales{
+    width: 95%;
+  }
+
+  .container-portales
+  .fondo-main-content-portales
+  .encabezado-content-portales{
+    width: 95%;
+  }
+
+  .tabla-portales{
+    display: block;
+    width: 100%;
+    overflow-x: scroll;
+  }
+}

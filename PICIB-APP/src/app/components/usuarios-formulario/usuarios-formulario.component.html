@@ -1,0 +1,159 @@
+
+<div class="container-formulario-usuario" *ngIf="isVisible">
+  <div class="formulario-usuario-content">
+    <button class="close" (click)="hide()">✖</button>
+    <h1 class="titulo-formulario-usuario">
+      {{ usuarioEditar.nombre ? "Editar Usuario" : "Crear Usuario" }}
+    </h1>
+    <div class="formulario-usuario-crear-editar">
+      <form
+        [formGroup]="formularioUsuario"
+        (submit)="onSubmit()"
+        class="formulario-usuario"
+      >
+        <div class="control-formulario-usuario">
+          <label for="" class="label-formulario-usuario">NOMBRE DEL USUARIO</label>
+          <input
+            type="text"
+            name="nombre"
+            id=""
+            [value]="usuarioEditar.nombre"
+            class="input-formulario-usuario"
+            formControlName="nombre"
+          />
+          <span
+            class="error-input-formulario-usuario"
+            *ngIf="nombre?.invalid && nombre?.touched"
+            >El nombre es requerido</span
+          >
+        </div>
+
+        <div class="control-formulario-usuario">
+          <label for="" class="label-formulario-usuario">DOCUMENTO DE IDENTIDAD</label>
+          <div class="input-number-with-selector">
+            <input type="text" class="input-formulario-usuario"  formControlName="documento" (ngModelChange)="onChangeDocument()"/>
+            <select name="select" class="select-formulario-usuario" formControlName="tipoDocumento" >
+
+              <option *ngFor="let tipo of tipoDocumentos" value="{{tipo}}">{{tipo}}</option>
+
+            </select>
+          </div>
+          <div *ngIf="documento?.invalid && documento?.touched">
+            <span
+            class="error-input-formulario-usuario"
+            *ngIf="documento?.hasError('required')"
+            >El documento es requerido </span
+          >
+          <span
+          class="error-input-formulario-usuario"
+          *ngIf="documento?.hasError('minlength')"
+          > El documento debe tener al menos {{ documento?.getError('minlength').requiredLength }} caracteres. </span
+        >
+        <span
+          class="error-input-formulario-usuario"
+          *ngIf="documento?.hasError('maxlength')"
+          > El documento no debe tener más de {{ documento?.getError('maxlength').requiredLength }} caracteres. </span
+        >
+
+        <span
+          class="error-input-formulario-usuario"
+          *ngIf="documento?.hasError('pattern')"
+          > No cumple con el pattern {{ documento?.getError('pattern') }}. </span
+        >
+          <span
+            class="error-input-formulario-usuario"
+            *ngIf="documento?.hasError('existeDocumento')"
+            >El documento ya existe </span
+          >
+
+          </div>
+
+          <span
+            class="error-input-formulario-usuario"
+            *ngIf="tipoDocumento?.invalid && tipoDocumento?.touched "
+            >El tipo documento es requerido </span
+          >
+        </div>
+
+
+        <div class="control-formulario-usuario">
+          <label for="" class="label-formulario-usuario">ROL</label>
+          <select name="select" class="select-formulario-usuario" formControlName="rol" >
+            <option *ngFor="let rol of roles" value="{{rol.valor}}">{{rol.etiqueta}}</option>
+          </select>
+          <span
+            class="error-input-formulario-usuario"
+            *ngIf="nombre?.invalid && nombre?.touched"
+            >El rol es requerido</span
+          >
+        </div>
+
+        <div class="formulario-guia-tic" *ngIf="rol?.value === 'GUIATIC'">
+          <div class="control-formulario-usuario">
+            <label for="" class="label-formulario-usuario"
+              >PORTAL</label
+            >
+            <input
+              class="input-formulario-usuario"
+              list="opcionesPortales"
+              name="opcionPortal"
+              [(ngModel)]="selectedPortal"
+              (ngModelChange)="onChangePortal()"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <datalist id="opcionesPortales">
+              <option
+                *ngFor="let portal of opcionesPortales"
+                value="{{ portal.nombre }}"
+              ></option>
+            </datalist>
+            <span
+              class="error-input-formulario-usuario"
+              *ngIf="portal?.invalid"
+              >La portal es requerido</span
+            >
+          </div>
+        </div>
+
+        <div class="control-formulario-usuario">
+          <label for="" class="label-formulario-usuario">CORREO ELECTRONICO</label>
+          <input  name="email"
+
+            type="email"
+
+            [value]="usuarioEditar.nombre"
+            class="input-formulario-usuario"
+            formControlName="correoElectronico"
+          />
+          <span
+            class="error-input-formulario-usuario"
+            *ngIf="email?.invalid && email?.touched"
+            >El correo electronico es requerido</span
+          >
+        </div>
+
+
+        <div class="control-formulario-usuario">
+          <label for="" class="label-formulario-usuario">Estado</label>
+          <label class="toggle">
+            <input
+              type="checkbox"
+              name="estado"
+              formControlName="estado"
+
+            />
+            <span class="slider round"></span>
+            <span class="message">Activo</span>
+            <span class="message-off">Desactivado</span>
+          </label>
+        </div>
+
+
+        <button class="btn-formulario" [disabled]="!formularioUsuario.valid">
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+

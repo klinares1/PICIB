@@ -1,0 +1,598 @@
+<div class="container-inscripcion">
+  <div
+    class="contenedor-formulario-inscripcion"
+    *ngIf="!registrarParticipanteFormulario && !registrarCursoFormulario && !finalizoRegistroShow"
+  >
+    <h1 class="titulo-formulario-inscripcion">Inscripción de curso</h1>
+    <hr class="separador-formulario-inscripcion" />
+    <form
+      class="formulario-inscripcion"
+      [formGroup]="formularioInscripcionBusqueda"
+      (submit)="onSubmitBusqueda()"
+    >
+      <div class="control-formulario-inscripcion">
+        <label for="" class="label-formulario-inscripcion"
+          >DOCUMENTO DE IDENTIDAD
+          <span class="label-formulario-requerido">*</span></label
+        >
+
+          <input
+            type="text"
+            name=""
+
+            class="input-formulario-inscripcion"
+            formControlName="numeroDocumentoBusqueda"
+          />
+
+
+        <div *ngIf="documentoBusqueda?.invalid && documentoBusqueda?.touched">
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="documentoBusqueda?.hasError('required')"
+            >El documento es requerido
+          </span>
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="documentoBusqueda?.hasError('minlength')"
+          >
+            El documento debe tener al menos
+            {{ documentoBusqueda?.getError("minlength").requiredLength }} caracteres. tiene {{ documentoBusqueda?.value.length }}
+          </span>
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="documentoBusqueda?.hasError('maxLength')"
+          >
+            El documento no debe tener más de
+            {{ documentoBusqueda?.getError("maxLength").requiredLength }} caracteres. tiene {{ documentoBusqueda?.value.length }}
+          </span>
+
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="documentoBusqueda?.hasError('pattern')"
+          >
+            No es un numero de identificacion.
+          </span>
+
+        </div>
+      </div>
+
+      <div class="control-formulario-inscripcion">
+        <label for="" class="label-formulario-inscripcion"
+          >FECHA DE NACIMIENTO<span class="label-formulario-requerido"
+            >*</span
+          ></label
+        >
+        <input
+          type="date"
+          class="input-formulario-inscripcion"
+          formControlName="fechaNacimientoBusqueda"
+          max="2018-01-01"
+        />
+
+        <div
+          *ngIf="
+            fechaNacimientoBusqueda?.invalid && fechaNacimientoBusqueda?.touched
+          "
+        >
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="fechaNacimientoBusqueda?.hasError('required')"
+            >La fecha de nacimiento es requerida
+          </span>
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="fechaNacimientoBusqueda?.hasError('pattern')"
+          >
+            Debe ser una fecha
+          </span>
+        </div>
+      </div>
+
+      <button
+        class="btn-formulario"
+        [disabled]="!formularioInscripcionBusqueda.valid"
+      >
+        Continuar
+      </button>
+    </form>
+  </div>
+
+  <div
+    class="contenedor-formulario-inscripcion"
+    *ngIf="registrarParticipanteFormulario && !registrarCursoFormulario"
+  >
+    <h1 class="titulo-formulario-inscripcion">Inscripción de curso</h1>
+    <hr class="separador-formulario-inscripcion" />
+    <form
+      action=""
+      class="formulario-inscripcion"
+      [formGroup]="formularioInscripcion"
+      (submit)="onSubmit()"
+    >
+      <div class="control-formulario-inscripcion">
+        <label for="" class="label-formulario-inscripcion"
+          >NOMBRE<span class="label-formulario-requerido">*</span></label
+        >
+        <input
+          type="text"
+          name=""
+
+          class="input-formulario-inscripcion"
+          formControlName="nombre"
+        />
+
+        <div *ngIf="nombre?.invalid && nombre?.touched">
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="nombre?.hasError('required')"
+            >El nombre es requerido
+          </span>
+        </div>
+      </div>
+
+      <div class="control-formulario-inscripcion">
+        <label for="" class="label-formulario-inscripcion"
+          >DOCUMENTO DE IDENTIDAD
+          <span class="label-formulario-requerido">*</span></label
+        >
+        <div class="input-number-with-selector">
+          <input
+            type="text"
+            name=""
+
+            class="input-formulario-inscripcion"
+            formControlName="documento"
+          />
+          <select
+            name="select"
+            class="select-formulario-inscripcion"
+            formControlName="tipoDocumento"
+          >
+            <option *ngFor="let tipo of tipoDocumentos" value="{{ tipo }}">
+              {{ tipo }}
+            </option>
+          </select>
+        </div>
+
+        <div *ngIf="documento?.invalid && documento?.touched">
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="documento?.hasError('required')"
+            >El documento es requerido
+          </span>
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="documento?.hasError('minlength')"
+          >
+            El documento debe tener al menos
+            {{ documento?.getError("minlength").requiredLength }} caracteres.  tiene {{ documento?.value.length }}
+          </span>
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="documento?.hasError('maxlength')"
+          >
+            El documento no debe tener más de
+            {{ documento?.getError("maxlength").requiredLength }} caracteres. tiene {{ documento?.value.length }}
+          </span>
+
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="documento?.hasError('pattern')"
+          >
+            No cumple con el pattern {{ documento?.getError("pattern") }}.
+          </span>
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="documento?.hasError('existeDocumento')"
+            >El documento ya existe
+          </span>
+        </div>
+
+        <div *ngIf="tipoDocumento?.invalid && tipoDocumento?.touched">
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="tipoDocumento?.hasError('invalidTipoDocumento')"
+            >Debe existir el tipo de documento
+          </span>
+
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="tipoDocumento?.hasError('required')"
+            >El tipo de documento es requerido
+          </span>
+        </div>
+      </div>
+
+      <div class="control-formulario-inscripcion">
+        <label for="" class="label-formulario-inscripcion"
+          >LUGAR DE EXPEDICIÓN<span class="label-formulario-requerido"
+            >*</span
+          ></label
+        >
+        <input
+          type="text"
+          class="input-formulario-inscripcion"
+          formControlName="lugarExpedicion"
+        />
+        <div *ngIf="barrio?.invalid && barrio?.touched">
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="barrio?.hasError('required')"
+            >El barrio es requerido
+          </span>
+        </div>
+      </div>
+
+      <div class="control-formulario-inscripcion">
+        <label for="" class="label-formulario-inscripcion"
+          >GENERO<span class="label-formulario-requerido">*</span></label
+        >
+        <select
+          name="select"
+          formControlName="genero"
+          class="input-formulario-inscripcion"
+        >
+          <option *ngFor="let genero of opcionesGenero" value="{{ genero }}">
+            {{ genero }}
+          </option>
+        </select>
+      </div>
+
+      <div class="control-formulario-inscripcion">
+        <label for="" class="label-formulario-inscripcion"
+          >CIUDAD RESIDENCIA<span class="label-formulario-requerido"
+            >*</span
+          ></label
+        >
+        <input
+          type="text"
+          class="input-formulario-inscripcion"
+          formControlName="ciudadResidencia"
+        />
+        <div *ngIf="barrio?.invalid && barrio?.touched">
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="barrio?.hasError('required')"
+            >El barrio es requerido
+          </span>
+        </div>
+      </div>
+
+      <div class="control-formulario-inscripcion">
+        <label for="" class="label-formulario-inscripcion"
+          >GRADO DE ESCOLARIDAD<span class="label-formulario-requerido"
+            >*</span
+          ></label
+        >
+        <input
+          type="text"
+          class="input-formulario-inscripcion"
+          formControlName="gradoEscolaridad"
+        />
+        <div *ngIf="barrio?.invalid && barrio?.touched">
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="barrio?.hasError('required')"
+            >El barrio es requerido
+          </span>
+        </div>
+      </div>
+
+      <div class="control-formulario-inscripcion">
+        <label for="" class="label-formulario-inscripcion"
+          >LOCALIDAD<span class="label-formulario-requerido">*</span></label
+        >
+        <input
+          class="input-formulario-inscripcion"
+          list="opcionesLocalidad"
+          formControlName="localidad"
+        />
+        <datalist id="opcionesLocalidad">
+          <option
+            *ngFor="let localidad of opcionesLocalidad"
+            value="{{ localidad }}"
+          >
+            {{ localidad }}
+          </option>
+        </datalist>
+
+        <div *ngIf="localidad?.invalid && localidad?.touched">
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="localidad?.hasError('required')"
+            >La localidad es requerida
+          </span>
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="localidad?.hasError('invalidLocalidad')"
+          >
+            La localidad no existe
+          </span>
+        </div>
+      </div>
+      <div class="control-formulario-inscripcion">
+        <label for="" class="label-formulario-inscripcion"
+          >NUMERO DE CONTACTO<span class="label-formulario-requerido"
+            >*</span
+          ></label
+        >
+        <input
+          type="text"
+          class="input-formulario-inscripcion"
+          formControlName="numeroContacto"
+        />
+
+        <div *ngIf="numeroContacto?.invalid && numeroContacto?.touched">
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="numeroContacto?.hasError('required')"
+            >El numero de contacto es requerido
+          </span>
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="numeroContacto?.hasError('pattern')"
+          >
+            Debe ser un numero de telefono
+          </span>
+        </div>
+      </div>
+
+      <div class="control-formulario-inscripcion">
+        <label for="" class="label-formulario-inscripcion"
+          >BARRIO<span class="label-formulario-requerido">*</span></label
+        >
+        <input
+          type="text"
+          class="input-formulario-inscripcion"
+          formControlName="barrio"
+        />
+        <div *ngIf="barrio?.invalid && barrio?.touched">
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="barrio?.hasError('required')"
+            >El barrio es requerido
+          </span>
+        </div>
+      </div>
+
+      <div class="control-formulario-inscripcion">
+        <label for="" class="label-formulario-inscripcion"
+          >CORREO ELECTRONICO<span class="label-formulario-requerido"
+            >*</span
+          ></label
+        >
+        <input
+          type="email"
+          class="input-formulario-inscripcion"
+          formControlName="correoElectronico"
+        />
+
+        <div *ngIf="correoElectronico?.invalid && correoElectronico?.touched">
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="correoElectronico?.hasError('required')"
+            >El correo es requerido
+          </span>
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="correoElectronico?.hasError('email')"
+          >
+            Debe ser un correo electronico
+          </span>
+        </div>
+      </div>
+      <div class="control-formulario-inscripcion">
+        <label for="" class="label-formulario-inscripcion"
+          >FECHA DE NACIMIENTO<span class="label-formulario-requerido"
+            >*</span
+          ></label
+        >
+        <input
+          type="date"
+          class="input-formulario-inscripcion"
+          formControlName="fechaNacimiento"
+          max="2018-01-01"
+        />
+
+        <div *ngIf="fechaNacimiento?.invalid && fechaNacimiento?.touched">
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="fechaNacimiento?.hasError('required')"
+            >La fecha de nacimiento es requerida
+          </span>
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="fechaNacimiento?.hasError('pattern')"
+          >
+            Debe ser una fecha
+          </span>
+        </div>
+      </div>
+
+      <div class="control-formulario-inscripcion">
+        <label for="" class="label-formulario-inscripcion"
+          >NOMBRE PERSONA DE CONTACTO<span class="label-formulario-requerido">*</span></label
+        >
+        <input
+          type="text"
+          name=""
+          id=""
+          class="input-formulario-inscripcion"
+          formControlName="nombrePersonaContacto"
+        />
+
+        <div *ngIf="nombrePersonaContacto?.invalid && nombrePersonaContacto?.touched">
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="nombrePersonaContacto?.hasError('required')"
+            >El nombre del contacto es requerido
+          </span>
+        </div>
+      </div>
+
+      <div class="control-formulario-inscripcion">
+        <label for="" class="label-formulario-inscripcion"
+          >NUMERO DE PERSONA DE CONTACTO<span class="label-formulario-requerido"
+            >*</span
+          ></label
+        >
+        <input
+          type="text"
+          class="input-formulario-inscripcion"
+          formControlName="numeroPersonaContacto"
+        />
+
+        <div *ngIf="numeroPersonaContacto?.invalid && numeroPersonaContacto?.touched">
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="numeroPersonaContacto?.hasError('required')"
+            >El numero de contacto es requerido
+          </span>
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="numeroPersonaContacto?.hasError('pattern')"
+          >
+            Debe ser un numero de telefono
+          </span>
+        </div>
+      </div>
+
+      <button class="btn-formulario" [disabled]="!formularioInscripcion.valid">
+        Enviar
+      </button>
+    </form>
+  </div>
+
+  <div
+    class="contenedor-formulario-inscripcion"
+    *ngIf="!registrarParticipanteFormulario && registrarCursoFormulario"
+  >
+    <h1 class="titulo-formulario-inscripcion">Inscripción de curso</h1>
+    <hr class="separador-formulario-inscripcion" />
+
+    <form
+      action=""
+      class="formulario-inscripcion"
+      [formGroup]="formularioInscripcionCurso"
+      (submit)="onSubmitCurso()"
+    >
+      <div class="control-formulario-inscripcion">
+        <label for="" class="label-formulario-inscripcion"
+          >PORTAL<span class="label-formulario-requerido">*</span></label
+        >
+        <input
+          class="input-formulario-inscripcion"
+          list="opcionesCapacitacionPortal"
+          name="opcion"
+          [(ngModel)]="selectedCapacitacionPortal"
+          (ngModelChange)="onChangeCapacitacionPortal()"
+          [ngModelOptions]="{ standalone: true }"
+        />
+        <datalist id="opcionesCapacitacionPortal">
+          <option
+            *ngFor="let capacitacion of capacitaciones"
+            value="{{ capacitacion.horario?.portal?.nombre }}"
+          ></option>
+        </datalist>
+      </div>
+
+      <div class="contenedor-capacitacion-inscripcion">
+        <div class="control-formulario-inscripcion">
+          <label for="" class="label-formulario-inscripcion"
+            >CURSO<span class="label-formulario-requerido">*</span></label
+          >
+          <input
+            class="input-formulario-inscripcion"
+            list="opcionesCapacitacion"
+            name="opcion"
+            [(ngModel)]="selectedCapacitacion"
+            (ngModelChange)="onChangeCapacitacion()"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <datalist id="opcionesCapacitacion">
+            <option
+              *ngFor="let capacitacion of capacitacionesFilter"
+              value="{{ capacitacion.curso?.nombre }}"
+            ></option>
+          </datalist>
+
+          <span
+            class="error-input-formulario-inscripcion"
+            *ngIf="capacitacion?.hasError('required')"
+            >El curso es requerido
+          </span>
+        </div>
+        <div
+          class="card-informacion-capacitacion"
+          *ngIf="selectedCapacitacionObject"
+        >
+          <p>
+            <strong>Portal: </strong>
+            {{ selectedCapacitacionObject.horario?.portal?.nombre }}
+            <strong>Ubicacion: </strong>
+            {{ selectedCapacitacionObject.horario?.portal?.ubicacion }}
+            <br />
+            <strong>Horario: </strong>
+            {{
+              selectedCapacitacionObject.horario?.fechaInicio
+                | date : 'dd/MM/yyyy HH:mm'
+            }}
+            a
+            {{
+              selectedCapacitacionObject.horario?.fechaFin | date : 'dd/MM/yyyy HH:mm'
+            }}
+          </p>
+        </div>
+      </div>
+
+      <button
+        class="btn-formulario"
+        [disabled]="!formularioInscripcionCurso.valid"
+      >
+        Continuar
+      </button>
+    </form>
+  </div>
+
+  <div class="contenedor-formulario-inscripcion-alerta" *ngIf="finalizoRegistroShow">
+    <h2>La inscripción se realizó correctamente</h2>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      x="0px"
+      y="0px"
+      width="60"
+      height="60"
+      viewBox="0 0 48 48"
+    >
+      <linearGradient
+        id="I9GV0SozQFknxHSR6DCx5a_70yRC8npwT3d_gr1"
+        x1="9.858"
+        x2="38.142"
+        y1="9.858"
+        y2="38.142"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset="0" stop-color="#21ad64"></stop>
+        <stop offset="1" stop-color="#088242"></stop>
+      </linearGradient>
+      <path
+        fill="url(#I9GV0SozQFknxHSR6DCx5a_70yRC8npwT3d_gr1)"
+        d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"
+      ></path>
+      <path
+        d="M32.172,16.172L22,26.344l-5.172-5.172c-0.781-0.781-2.047-0.781-2.828,0l-1.414,1.414	c-0.781,0.781-0.781,2.047,0,2.828l8,8c0.781,0.781,2.047,0.781,2.828,0l13-13c0.781-0.781,0.781-2.047,0-2.828L35,16.172	C34.219,15.391,32.953,15.391,32.172,16.172z"
+        opacity=".05"
+      ></path>
+      <path
+        d="M20.939,33.061l-8-8c-0.586-0.586-0.586-1.536,0-2.121l1.414-1.414c0.586-0.586,1.536-0.586,2.121,0	L22,27.051l10.525-10.525c0.586-0.586,1.536-0.586,2.121,0l1.414,1.414c0.586,0.586,0.586,1.536,0,2.121l-13,13	C22.475,33.646,21.525,33.646,20.939,33.061z"
+        opacity=".07"
+      ></path>
+      <path
+        fill="#fff"
+        d="M21.293,32.707l-8-8c-0.391-0.391-0.391-1.024,0-1.414l1.414-1.414c0.391-0.391,1.024-0.391,1.414,0	L22,27.758l10.879-10.879c0.391-0.391,1.024-0.391,1.414,0l1.414,1.414c0.391,0.391,0.391,1.024,0,1.414l-13,13	C22.317,33.098,21.683,33.098,21.293,32.707z"
+      ></path>
+    </svg>
+  </div>
+</div>
+
+<app-notificaciones-push #notificacion></app-notificaciones-push>

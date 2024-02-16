@@ -1,0 +1,104 @@
+<div class="contenedor-reportes">
+  <div class="contenedor-filtros">
+    <h2>Filtros reportes</h2>
+    <div class="filtros-graficas">
+      <div class="control-filtro-reportes">
+        <label for="" class="label-filtro-reportes">Fecha Inicio</label>
+        <input
+          type="date"
+          name="nombre"
+          id=""
+          class="input-filtro-reportes"
+          [(ngModel)]="filtroFechaInicio"
+          (ngModelChange)="filtrarFechaInicio()"
+        />
+      </div>
+      <div class="control-filtro-reportes">
+        <label for="" class="label-filtro-reportes">Fecha Fin</label>
+        <input
+          type="date"
+          class="input-filtro-reportes"
+          [(ngModel)]="filtroFechaFin"
+          (ngModelChange)="filtrarFechaFin()"
+        />
+      </div>
+
+      <div class="control-filtro-reportes">
+        <label for="" class="label-filtro-reportes">PORTAL</label>
+        <select
+          class="select-formulario-reportes"
+          [(ngModel)]="filtroPortal"
+          (ngModelChange)="filtrarPortal()"
+        >
+          <option
+            *ngFor="let portal of opcionesPortalesFiltro"
+            value="{{ portal }}"
+          >
+            {{ portal }}
+          </option>
+        </select>
+      </div>
+
+      <div class="control-filtro-reportes">
+        <label for="" class="label-filtro-reportes">INSTITUCIONES</label>
+        <select
+          class="select-formulario-reportes"
+          [(ngModel)]="filtroInstitucion"
+          (ngModelChange)="filtrarInstitucion()"
+        >
+          <option
+            *ngFor="let institucion of opcionesInstitucionesFiltro"
+            value="{{ institucion }}"
+          >
+            {{ institucion }}
+          </option>
+        </select>
+      </div>
+
+      <div class="control-filtro-reportes">
+        <label for="" class="label-filtro-reportes">CURSOS</label>
+        <select
+          class="select-formulario-reportes"
+          [(ngModel)]="filtroCurso"
+          (ngModelChange)="filtrarCurso()"
+        >
+          <option *ngFor="let curso of opcioneCursosFiltro" value="{{ curso }}">
+            {{ curso }}
+          </option>
+        </select>
+      </div>
+
+      <div class="control-filtro-reportes">
+        <label for="" class="label-filtro-reportes">LOCALIDAD</label>
+        <select
+          class="select-formulario-reportes"
+          [(ngModel)]="filtroLocalidad"
+          (ngModelChange)="filtrarLocalidad()"
+        >
+          <option
+            *ngFor="let localidad of opcionesLocalidesFiltro"
+            value="{{ localidad }}"
+          >
+            {{ localidad }}
+          </option>
+        </select>
+      </div>
+
+      <button (click)="refreshFiltros()" class="btn-refresh-filters">Refrescar filtros</button>
+    </div>
+  </div>
+  <div class="contenedor-graficas" id="graficas-contenedor">
+    <app-bar-certificaciones class="grafica"
+      [inscripcionesTodas]="inscripcionesFiltradas"
+    ></app-bar-certificaciones>
+    <app-line-inscripciones class="grafica"
+      [inscripcionesTodas]="inscripcionesFiltradas"
+    ></app-line-inscripciones>
+    <app-dona class="grafica" [inscripcionesTodas]="inscripcionesFiltradas"></app-dona>
+    <app-dona-edades class="grafica"
+      [inscripcionesTodas]="inscripcionesFiltradas"
+    ></app-dona-edades>
+
+  </div>
+  <button class="btn-pdf" (click)="imprimirReportes()">Descargar PDF</button>
+</div>

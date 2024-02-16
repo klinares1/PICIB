@@ -1,0 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;700&display=swap");
+@import url("https://necolas.github.io/normalize.css/8.0.1/normalize.css");
+
+body {
+  overflow-x: hidden;
+}

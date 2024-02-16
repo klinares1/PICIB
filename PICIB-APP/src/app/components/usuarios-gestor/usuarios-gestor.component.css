@@ -1,0 +1,216 @@
+.container-usuarios {
+  background-image: url("../../../assets/background-waves.svg");
+  width: 100vw;
+
+  padding-top: 60px;
+  background-color: #f4f4f4;
+}
+
+.container-usuarios .fondo-main-content-usuarios {
+  width: 88vw;
+  margin: auto;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: #fff;
+  padding-bottom: 60px;
+  padding-top: 20px;
+}
+
+.container-usuarios .fondo-main-content-usuarios .encabezado-content-usuarios {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.container-usuarios
+  .fondo-main-content-usuarios
+  .encabezado-content-usuarios
+  .titulo-formulario-usuario {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  color: #333333;
+  width: 500px;
+  margin: 0px;
+}
+
+.container-usuarios
+  .fondo-main-content-usuarios
+  .encabezado-content-usuarios
+  .btn-agregar-usuario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  color: #fff;
+  fill: #fff;
+  background: #c86dd7;
+  border-radius: 12px;
+  outline: none;
+  border: none;
+  text-align: center;
+  height: 32px;
+}
+.container-usuarios
+  .fondo-main-content-usuarios
+  .encabezado-content-usuarios
+  .btn-agregar-usuario:hover {
+  background: #6200b3;
+  font-weight: 600;
+}
+.container-usuarios
+  .fondo-main-content-usuarios
+  .encabezado-content-usuarios
+  .btn-agregar-usuario:active {
+  width: 132px;
+  height: 34px;
+}
+.container-usuarios
+  .fondo-main-content-usuarios
+  .encabezado-content-usuarios
+  .btn-agregar-usuario
+  svg {
+  height: 28px;
+  width: 28px;
+}
+
+.tabla-usuarios {
+  text-align: left;
+  position: relative;
+  border-collapse: collapse;
+  color: #333333;
+  background-color: #fff;
+  margin: auto;
+  width: 90%;
+}
+
+td,
+th {
+  border: 2px solid #f4f4f4;
+  padding: 20px;
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+th {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 24px;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+  background: #fff;
+  border-radius: 0;
+  position: sticky;
+  top: 0;
+  padding: 10px;
+  text-align: center;
+}
+
+tbody tr td button {
+  outline: none;
+  border: none;
+  width: 38px;
+  height: 38px;
+  background: none;
+}
+
+tbody tr td button svg {
+  width: auto;
+}
+
+tbody tr td button:hover {
+  width: 40px;
+}
+
+.contenedor-filtros-usuarios{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  height: 120px;
+  margin: auto;
+  margin-bottom: 30px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.control-filtro-usuario{
+  width: 160px;
+}
+
+.label-filtro-usuario{
+  width: 100%;
+}
+
+
+.label-filtro-usuario {
+  width: 100%;
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+
+  color: #333333;
+}
+
+.input-filtro-usuario {
+  width: 100%;
+
+  background: #ffffff;
+  border: 1px solid #dadada;
+  border-radius: 3px;
+  height: 40px;
+}
+
+.input-formulario-usuario:focus{
+  outline: 2px solid #131b23ab;
+}
+
+
+.select-formulario-usuario{
+  width: 160px;
+  height: 40px;
+  outline: none;
+  border: 1px solid #dadada;
+  border-radius: 3px;
+}
+
+
+@media (max-width: 425px) {
+  .container-usuarios
+  .fondo-main-content-usuarios{
+    width: 95%;
+  }
+
+  .container-usuarios
+  .fondo-main-content-usuarios
+  .encabezado-content-usuarios{
+    width: 95%;
+  }
+
+  .tabla-usuarios{
+    display: block;
+    width: 100%;
+    overflow-x: scroll;
+  }
+  .contenedor-filtros-usuarios{
+
+    width: 100%;
+    overflow-x: scroll;
+    column-gap: 15px;
+  }
+
+  .input-filtro-usuario{
+    min-width: 160px;
+  }
+}

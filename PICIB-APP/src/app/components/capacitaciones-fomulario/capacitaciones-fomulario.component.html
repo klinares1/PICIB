@@ -1,0 +1,151 @@
+<div class="container-formulario-capacitacion" *ngIf="isVisible">
+  <div class="formulario-capacitacion-content">
+    <button class="close" (click)="hide()">✖</button>
+    <h1 class="titulo-formulario-capacitacion">
+      {{ capacitacionEditar.id ? "Editar Capacitacion" : "Crear Capacitacion" }}
+    </h1>
+    <div class="formulario-capacitacion-crear-editar">
+      <form
+        [formGroup]="formularioCapacitacion"
+        (submit)="onSubmit()"
+        class="formulario-capacitacion"
+      >
+        <div class="control-formulario-capacitacion" formGroupName="curso">
+          <label for="" class="label-formulario-capacitacion">CURSO</label>
+          <input
+            class="input-formulario-capacitacion"
+            list="opciones"
+            name="opcion"
+            [(ngModel)]="selectedCurso"
+            (ngModelChange)="onChangeCurso()"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <datalist id="opciones">
+            <option
+              *ngFor="let curso of opcionesCursos"
+              value="{{ curso.nombre }}"
+            ></option>
+          </datalist>
+          <span
+            class="error-input-formulario-capacitacion"
+            *ngIf="curso?.invalid"
+            >El curso es requerido</span
+          >
+        </div>
+
+        <div class="control-formulario-capacitacion" formGroupName="institucion">
+          <label for="" class="label-formulario-capacitacion"
+            >INSTITUCIÓN</label
+          >
+          <input
+            class="input-formulario-capacitacion"
+            list="opcionesInstituciones"
+            name="opcionInstitucion"
+            [(ngModel)]="selectedInstitucion"
+            (ngModelChange)="onChangeInstitucion()"
+            [ngModelOptions]="{ standalone: true }"
+          />
+          <datalist id="opcionesInstituciones">
+            <option
+              *ngFor="let institucion of opcionesInsituciones"
+              value="{{ institucion.nombre }}"
+            ></option>
+          </datalist>
+          <span
+            class="error-input-formulario-capacitacion"
+            *ngIf="institucion?.invalid"
+            >La institucion es requerido</span
+          >
+        </div>
+
+        <div class="formulario-capacitacion-horario" formGroupName="horario">
+          <div class="control-formulario-capacitacion">
+            <label for="" class="label-formulario-capacitacion">HORARIO DE INICIO</label>
+            <input
+              name="fechaInicio"
+              id=""
+              [value]="capacitacionEditar.horario?.fechaInicio"
+              class="input-formulario-capacitacion"
+              formControlName="fechaInicio"
+              type="datetime-local"
+            />
+          </div>
+
+          <div class="control-formulario-capacitacion">
+            <label for="" class="label-formulario-capacitacion">HORARIO DE FIN</label>
+            <input
+              name="fechaFin"
+              id=""
+              [value]="capacitacionEditar.horario?.fechaFin"
+              class="input-formulario-capacitacion"
+              formControlName="fechaFin"
+              type="datetime-local"
+            />
+          </div>
+
+          <div class="control-formulario-capacitacion" >
+            <label for="" class="label-formulario-capacitacion">PORTAL</label>
+            <input
+              class="input-formulario-capacitacion"
+              list="opcionesPortales"
+              name="opcionPortal"
+              [(ngModel)]="selectedPortal"
+              (ngModelChange)="onChangePortal()"
+              [ngModelOptions]="{ standalone: true }"
+            />
+            <datalist id="opcionesPortales">
+              <option
+                *ngFor="let portal of opcionesPortales"
+                value="{{ portal.nombre }}"
+              ></option>
+            </datalist>
+            <span
+            class="error-input-formulario-capacitacion"
+            *ngIf="portal?.invalid"
+            >El portal es requerido</span
+          >
+          </div>
+        </div>
+
+        <div class="control-formulario-capacitacion">
+          <label for="" class="label-formulario-capacitacion">Estado</label>
+          <label class="toggle">
+            <input
+              type="checkbox"
+              name="estado"
+              formControlName="estado"
+              [value]="capacitacionEditar.estado"
+            />
+            <span class="slider round"></span>
+            <span class="message">Activo</span>
+            <span class="message-off">Desactivado</span>
+          </label>
+        </div>
+
+        <div class="control-formulario-capacitacion">
+          <label for="" class="label-formulario-capacitacion">CANTIDAD MAXIMA DE INSCRITOS</label>
+          <input
+            type="number"
+            name="cantidadInscritos"
+            id=""
+
+            class="input-formulario-capacitacion"
+            formControlName="cantidadMaximaInscritos"
+          />
+          <span
+            class="error-input-formulario-capacitacion"
+            *ngIf="nombre?.invalid && nombre?.touched"
+            >El nombre es requerido</span
+          >
+        </div>
+
+        <button
+          class="btn-formulario"
+          [disabled]="!formularioCapacitacion.valid || !formularioCapacitacion.dirty "
+        >
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

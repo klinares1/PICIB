@@ -1,0 +1,138 @@
+<div class="container-formulario-institucion" *ngIf="isVisible">
+  <div class="formulario-institucion-content">
+    <button class="close" (click)="hide()">✖</button>
+    <h1 class="titulo-formulario-institucion">
+      {{
+        institucionEditar.nombre ? "Editar Institucion" : "Crear Institucion"
+      }}
+    </h1>
+    <div class="formulario-institucion-crear-editar">
+      <form
+        [formGroup]="formularioInstitucion"
+        (submit)="onSubmit()"
+        class="formulario-institucion"
+      >
+        <div class="control-formulario-institucion">
+          <label for="" class="label-formulario-institucion"
+            >NOMBRE DE LA INSTITUCION</label
+          >
+          <input
+            type="text"
+            name="nombre"
+            id=""
+            [value]="institucionEditar.nombre"
+            class="input-formulario-institucion"
+            formControlName="nombre"
+          />
+          <span
+            class="error-input-formulario-institucion"
+            *ngIf="nombre?.invalid && nombre?.touched"
+            >El nombre es requerido</span
+          >
+        </div>
+
+
+        <div class="formulario-contacto-institucion" formGroupName="contacto">
+
+          <div class="control-formulario-institucion">
+            <label for="" class="label-formulario-institucion"
+              >NOMBRE DEL CONTACTO</label
+            >
+            <input
+              type="text"
+              name="nombre"
+              id=""
+              [value]="institucionEditar.nombre"
+              class="input-formulario-institucion"
+              formControlName="nombre"
+            />
+            <span
+              class="error-input-formulario-institucion"
+              *ngIf="nombre?.invalid && nombre?.touched"
+              >El nombre es requerido</span
+            >
+          </div>
+
+          <div class="control-formulario-institucion">
+            <label for="" class="label-formulario-inscripcion"
+              >NUMERO DE CONTACTO<span class="label-formulario-requerido">*</span></label
+            >
+            <input
+              type="text"
+              class="input-formulario-institucion"
+              formControlName="numeroContacto"
+            />
+
+            <div *ngIf="contactoNumero?.invalid && contactoNumero?.touched">
+              <span
+                class="error-input-formulario-institucion"
+                *ngIf="contactoNumero?.hasError('required')"
+                >El numero de contacto es requerido
+              </span>
+              <span
+                class="error-input-formulario-institucion"
+                *ngIf="contactoNumero?.hasError('pattern')"
+              >
+                Debe ser un numero de telefono
+              </span>
+
+            </div>
+
+          </div>
+
+          <div class="control-formulario-institucion">
+            <label for="" class="label-formulario-institucion"
+              >CORREO ELECTRONICO<span class="label-formulario-requerido">*</span></label
+            >
+            <input
+              type="email"
+              class="input-formulario-institucion"
+              formControlName="correoElectronico"
+            />
+
+            <div *ngIf="contactoCorreoElectronico?.invalid && contactoCorreoElectronico?.touched">
+              <span
+                class="error-input-formulario-institucion"
+                *ngIf="contactoCorreoElectronico?.hasError('required')"
+                >El correo es requerido
+              </span>
+              <span
+                class="error-input-formulario-institucion"
+                *ngIf="contactoCorreoElectronico?.hasError('email')"
+              >
+                Debe ser un correo electronico
+              </span>
+
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+        <div class="control-formulario-institucion">
+          <label for="" class="label-formulario-institucion">Estado</label>
+          <label class="toggle">
+            <input
+              type="checkbox"
+              name="estado"
+              formControlName="estado"
+              [value]="institucionEditar.estado"
+            />
+            <span class="slider round"></span>
+            <span class="message">Activo</span>
+            <span class="message-off">Desactivado</span>
+          </label>
+        </div>
+
+        <button
+          class="btn-formulario"
+          [disabled]="!formularioInstitucion.valid"
+        >
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

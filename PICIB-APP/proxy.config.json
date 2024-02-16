@@ -1,0 +1,8 @@
+{
+  "/v3/*":{
+    "target": "https://api.sendgrid.com",
+    "secure": true,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

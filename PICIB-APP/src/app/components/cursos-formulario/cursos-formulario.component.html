@@ -1,0 +1,63 @@
+<div class="container-formulario-curso" *ngIf="isVisible">
+  <div class="formulario-curso-content">
+    <button class="close" (click)="hide()">✖</button>
+    <h1 class="titulo-formulario-curso">
+      {{ cursoEditar.nombre ? "Editar Curso" : "Crear Curso" }}
+    </h1>
+    <div class="formulario-curso-crear-editar">
+      <form
+        [formGroup]="formularioCurso"
+        (submit)="onSubmit()"
+        class="formulario-curso"
+      >
+        <div class="control-formulario-curso">
+          <label for="" class="label-formulario-curso">NOMBRE DEL CURSO</label>
+          <input
+            type="text"
+            name="nombre"
+            id=""
+            [value]="cursoEditar.nombre"
+            class="input-formulario-curso"
+            formControlName="nombre"
+          />
+          <span
+            class="error-input-formulario-curso"
+            *ngIf="nombre?.invalid && nombre?.touched"
+            >El nombre es requerido</span
+          >
+        </div>
+        <div class="control-formulario-curso">
+          <label for="" class="label-formulario-curso">Estado</label>
+          <label class="toggle">
+            <input
+              type="checkbox"
+              name="estado"
+              formControlName="estado"
+              [value]="cursoEditar.estado"
+            />
+            <span class="slider round"></span>
+            <span class="message">Activo</span>
+            <span class="message-off">Desactivado</span>
+          </label>
+        </div>
+        <div class="control-formulario-curso">
+          <label for="descripcion" class="label-formulario-curso"
+            >DESCRIPCION</label
+          >
+          <textarea
+            name="descripcion"
+            id=""
+            [value]="cursoEditar.descripcion"
+            class="input-formulario-curso"
+            formControlName="descripcion"
+          >
+          </textarea>
+        </div>
+
+        <button class="btn-formulario" [disabled]="!formularioCurso.valid || !formularioCurso.dirty">
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
